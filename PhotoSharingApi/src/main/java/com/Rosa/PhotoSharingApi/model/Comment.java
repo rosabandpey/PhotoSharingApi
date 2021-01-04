@@ -6,7 +6,7 @@ import java.util.List;
 public class Comment {
 
 	
-	private int id;
+	private Integer id;
 	private String userName;
 	private String content;
 	private Date postedDate;

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Post {
 
-	private int id;
+	private Integer id;
 	private String name;
 	private String caption;
 	private String location;
