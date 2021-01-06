@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+<<<<<<< HEAD
 public class User {
 
 	
@@ -17,6 +18,42 @@ public class User {
 	private Date createdDate;
 	private Set<UserRole> userRoles=new HashSet<>();
 	private List<Post> post;
+=======
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class User {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(updatable=false,nullable=false)
+	private Integer id;
+	private String name;
+	
+	@Column(unique=true)
+	private String userName;
+	private String password;
+	private String email;
+	
+	@Column (columnDefinition="text")
+	private String bio;
+	private Date createdDate;
+	
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL ,fetch=FetchType.EAGER)
+	private Set<UserRole> userRoles=new HashSet<>();
+	
+	@OneToMany(cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
+	private List<Post> post;
+	
+	@OneToMany(cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
+>>>>>>> branch 'master' of https://github.com/rosabandpey/PhotoSharingApi.git
 	private List<Post> LikedPost;
 	
 	

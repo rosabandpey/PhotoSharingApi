@@ -3,11 +3,30 @@ package com.Rosa.PhotoSharingApi.model;
 import java.util.Date;
 import java.util.List;
 
+<<<<<<< HEAD
 public class Comment {
 
 	
 	private Integer id;
 	private String userName;
+=======
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Comment {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(updatable=false,nullable=false)
+	private Integer id;
+	private String userName;
+	
+	@Column (columnDefinition="text")
+>>>>>>> branch 'master' of https://github.com/rosabandpey/PhotoSharingApi.git
 	private String content;
 	private Date postedDate;
 	
