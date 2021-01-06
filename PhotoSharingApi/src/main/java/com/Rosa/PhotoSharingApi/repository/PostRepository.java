@@ -10,11 +10,11 @@ import com.Rosa.PhotoSharingApi.model.Post;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-	@Query("SELECT p FROM Post p order by p.postedDate DESC")
+	@Query("SELECT p FROM Post p order by p.postDate DESC")
 	public List<Post> findAll();
 	
-	@Query("SELECT p FROM Post p WHERE p.username=:username order by p.postedDate DESC")
-	public List<Post> findByUsername(@Param("username") String username);
+	@Query("SELECT p FROM Post p WHERE p.userName=:userName order by p.postDate DESC")
+	public List<Post> findByUsername(@Param("userName") String username);
 	
 	@Query("SELECT p from Post p WHERE p.id=:id")
 	public Post findPostById(@Param("id") long id);
