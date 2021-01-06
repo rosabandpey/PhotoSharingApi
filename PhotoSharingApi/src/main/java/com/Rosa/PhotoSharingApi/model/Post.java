@@ -2,18 +2,6 @@ package com.Rosa.PhotoSharingApi.model;
 
 import java.util.Date;
 import java.util.List;
-
-<<<<<<< HEAD
-public class Post {
-
-	private Integer id;
-	private String name;
-	private String caption;
-	private String location;
-	private int likes;
-	private Date postDate;
-	private int userImageId;
-=======
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
 
 @Entity
 public class Post {
@@ -42,7 +31,7 @@ public class Post {
 	
 	@OneToMany(cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
 	@JoinColumn(name="post_id")
->>>>>>> branch 'master' of https://github.com/rosabandpey/PhotoSharingApi.git
+
 	private List<Comment> commentList;
 	
 	public Post(int id, String name, String caption, String location, int likes, Date postDate, int userImageId,

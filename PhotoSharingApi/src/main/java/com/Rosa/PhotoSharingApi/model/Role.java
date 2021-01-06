@@ -3,14 +3,6 @@ package com.Rosa.PhotoSharingApi.model;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
-<<<<<<< HEAD
-public class Role {
-
-	
-	private Integer RoleId;
-	private String name;
-=======
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+
 
 @Entity
 public class Role {
@@ -31,7 +25,6 @@ public class Role {
 	private String name;
 	
 	@OneToMany(mappedBy="role",cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
->>>>>>> branch 'master' of https://github.com/rosabandpey/PhotoSharingApi.git
 	private Set<UserRole>  userRole=new HashSet<>();
 		
 	

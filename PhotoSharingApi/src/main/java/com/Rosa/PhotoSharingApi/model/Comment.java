@@ -2,14 +2,6 @@ package com.Rosa.PhotoSharingApi.model;
 
 import java.util.Date;
 import java.util.List;
-
-<<<<<<< HEAD
-public class Comment {
-
-	
-	private Integer id;
-	private String userName;
-=======
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +18,6 @@ public class Comment {
 	private String userName;
 	
 	@Column (columnDefinition="text")
->>>>>>> branch 'master' of https://github.com/rosabandpey/PhotoSharingApi.git
 	private String content;
 	private Date postedDate;
 	
