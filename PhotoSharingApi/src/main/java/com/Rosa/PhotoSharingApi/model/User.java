@@ -23,7 +23,7 @@ public class User {
 	private String name;
 	
 	@Column(unique=true)
-	private String userName;
+	private String username;
 	private String password;
 	private String email;
 	
@@ -42,12 +42,12 @@ public class User {
 	private List<Post> LikedPost;
 	
 	
-	public User(int id, String name, String userName, String password, String email, String bio, Date createdDate,
+	public User(int id, String name, String username, String password, String email, String bio, Date createdDate,
 			Set<UserRole> userRoles, List<Post> post, List<Post> likedPost) {
 		
 		this.id = id;
 		this.name = name;
-		this.userName = userName;
+		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.bio = bio;
@@ -74,11 +74,11 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;

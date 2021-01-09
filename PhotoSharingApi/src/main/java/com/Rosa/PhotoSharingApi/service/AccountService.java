@@ -10,7 +10,7 @@ public interface AccountService {
 	
 	public void saveUser(User user);
 	
-	public User findByUserName(String username);
+	public User findByUsername(String username);
 	
 	public User findByUserEmail(String email);
 	
@@ -29,5 +29,8 @@ public interface AccountService {
 	public void resetPassword(User user);
 	
 	public List<User> userListByUsername(String username);
+	
+	public User simpleSave(User user);
+	
 	
 }
