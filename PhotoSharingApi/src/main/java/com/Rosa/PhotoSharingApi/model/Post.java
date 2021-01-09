@@ -28,13 +28,14 @@ public class Post {
 	private int likes;
 	private Date postDate;
 	private int userImageId;
+	private String username;
 	
 	@OneToMany(cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
 	@JoinColumn(name="post_id")
 
 	private List<Comment> commentList;
 	
-	public Post(int id, String name, String caption, String location, int likes, Date postDate, int userImageId,
+	public Post(int id, String name, String caption, String location, int likes, Date postDate,String username, int userImageId,
 			List<Comment> commentList) {
 				this.id = id;
 		this.name = name;
@@ -42,6 +43,7 @@ public class Post {
 		this.location = location;
 		this.likes = likes;
 		this.postDate = postDate;
+		this.username=username;
 		this.userImageId = userImageId;
 		this.commentList = commentList;
 	}
@@ -51,6 +53,14 @@ public class Post {
 	}
 	
 	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public int getId() {
 		return id;
 	}
