@@ -1,5 +1,6 @@
 package com.Rosa.PhotoSharingApi.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -14,8 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class User {
+public class User  implements Serializable {
 
+	
+	private static final long serialVersionUID = -6955836358739196276L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(updatable=false,nullable=false)
@@ -38,7 +41,6 @@ public class User {
 	private List<Post> post;
 	
 	@OneToMany(cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
-
 	private List<Post> LikedPost;
 	
 	
@@ -113,8 +115,8 @@ public class User {
 	public List<Post> getPost() {
 		return post;
 	}
-	public void setPost(List<Post> post) {
-		this.post = post;
+	public void setPost(Post post) {
+		this.post.add( post);
 	}
 	public List<Post> getLikedPost() {
 		return LikedPost;

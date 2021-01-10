@@ -1,5 +1,6 @@
 package com.Rosa.PhotoSharingApi.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +16,10 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class Role {
+public class Role implements Serializable {
+
+	
+	private static final long serialVersionUID = -8109015272289072306L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

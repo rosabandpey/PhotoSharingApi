@@ -4,17 +4,19 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.Rosa.PhotoSharingApi.model.User;
 
 public interface AccountRepository extends JpaRepository<User, Long> {
 
-	@Query("SELECT p FROM Post p WHERE p.username=:username ORDER BY p.postDate DESC")
+	
     public User findByUsername(String username);
 	
 	public User findByEmail(String email);
 	
-	public User findByUserId(Long id);
+	@Query("SELECT user FROM User user WHERE user.id=:id ")
+	public User findByUserId(@Param("id")Long id);
 	
 	public List<User> findByUser(String username);
 	

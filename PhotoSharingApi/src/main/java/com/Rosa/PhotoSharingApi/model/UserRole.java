@@ -1,5 +1,7 @@
 package com.Rosa.PhotoSharingApi.model;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +14,10 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class UserRole {
+public class UserRole  implements Serializable{
+
+	
+	private static final long serialVersionUID = -121838495708416186L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -35,6 +40,10 @@ public class UserRole {
 		this.role = role;
 	}
 
+	public UserRole(User user, Role role) {
+		this.user = user;
+		this.role = role;
+	}
 
 	public UserRole() {
 	}
