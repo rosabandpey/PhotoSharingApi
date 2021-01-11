@@ -43,7 +43,7 @@ public class AccountServiceImpl implements AccountService {
 	private RoleRepository roleRepo;
 	
 	@Autowired
-	private EmailConstructor emailCunstructor;
+	private EmailConstructor emailConstructor;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -78,7 +78,7 @@ public class AccountServiceImpl implements AccountService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		mailSender.send(emailCunstructor.contructNewUserEmail(user, password));
+		mailSender.send(emailConstructor.contructNewUserEmail(user, password));
 		return user;
 	}
 
@@ -133,7 +133,7 @@ public class AccountServiceImpl implements AccountService {
 		user.setEmail(email);
 		user.setBio(bio);
 		accountRepo.save(user);
-		mailSender.send(emailCunstructor.constructUpdateUserProfileEmail(user));
+		mailSender.send(emailConstructor.constructUpdateUserProfileEmail(user));
 		return user;
 
 	}
@@ -150,7 +150,7 @@ public class AccountServiceImpl implements AccountService {
 		String encryptedPass=bCryptPasswordEncoder.encode(password);
 		user.setPassword(encryptedPass);
 		accountRepo.save(user);
-		mailSender.send(emailCunstructor.constructResetPasswordEmail(user, password));
+		mailSender.send(emailConstructor.constructResetPasswordEmail(user, password));
 
 
 	}
@@ -161,7 +161,7 @@ public class AccountServiceImpl implements AccountService {
 	public User simpleSave(User user) {
 		
 		accountRepo.save(user);
-		mailSender.send(emailCunstructor.constructUpdateUserProfileEmail(user));
+		mailSender.send(emailConstructor.constructUpdateUserProfileEmail(user));
 		return user;
 		
 	}
@@ -172,7 +172,7 @@ public class AccountServiceImpl implements AccountService {
 		String encryptedPassword = bCryptPasswordEncoder.encode(newpassword);
 		user.setPassword(encryptedPassword);
 		accountRepo.save(user);
-		mailSender.send(emailCunstructor.constructResetPasswordEmail(user, newpassword));
+		mailSender.send(emailConstructor.constructResetPasswordEmail(user, newpassword));
 		
 	}
 
