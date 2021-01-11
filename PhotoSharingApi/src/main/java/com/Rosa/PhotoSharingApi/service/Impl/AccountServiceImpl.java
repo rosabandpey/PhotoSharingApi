@@ -155,11 +155,7 @@ public class AccountServiceImpl implements AccountService {
 
 	}
 
-	@Override
-	public List<User> userListByUsername(String username) {
-		
-		return accountRepo.findByUser(username);
-	}
+	
 
 	@Override
 	public User simpleSave(User user) {
@@ -200,6 +196,15 @@ public class AccountServiceImpl implements AccountService {
 		
 		return "Photo saved Successfully";
 		
+	}
+
+
+
+
+	@Override
+	public List<User> userListByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

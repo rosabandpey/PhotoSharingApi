@@ -18,6 +18,6 @@ public interface AccountRepository extends JpaRepository<User, Long> {
 	@Query("SELECT user FROM User user WHERE user.id=:id ")
 	public User findByUserId(@Param("id")Long id);
 	
-	public List<User> findByUser(String username);
+	public List<User> findByUsernameContaining(String username);
 	
 }
