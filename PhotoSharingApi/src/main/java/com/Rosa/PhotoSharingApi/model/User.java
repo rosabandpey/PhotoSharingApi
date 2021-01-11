@@ -121,8 +121,8 @@ public class User  implements Serializable {
 	public List<Post> getLikedPost() {
 		return LikedPost;
 	}
-	public void setLikedPost(List<Post> likedPost) {
-		LikedPost = likedPost;
+	public void setLikedPost(Post likedPost) {
+		LikedPost.add(likedPost) ;
 	}
 	
 	
