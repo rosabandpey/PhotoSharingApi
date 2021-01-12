@@ -22,7 +22,7 @@ public class Post  implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(updatable=false,nullable=false)
-	private Integer id;
+	private Long  id;
 	private String name;
 	
 	@Column (columnDefinition="text")
@@ -30,14 +30,14 @@ public class Post  implements Serializable {
 	private String location;
 	private int likes;
 	private Date postDate;
-	private int userImageId;
+	private Long  userImageId;
 	private String username;
 	
 	@OneToMany(cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
 	@JoinColumn(name="post_id")
 	private List<Comment> commentList;
 	
-	public Post(int id, String name, String caption, String location, int likes, Date postDate,String username, int userImageId,
+	public Post(Long  id, String name, String caption, String location, int likes, Date postDate,String username, Long  userImageId,
 			List<Comment> commentList) {
 				this.id = id;
 		this.name = name;
@@ -63,10 +63,10 @@ public class Post  implements Serializable {
 		this.username = username;
 	}
 
-	public int getId() {
+	public Long  getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long  id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -99,10 +99,10 @@ public class Post  implements Serializable {
 	public void setPostDate(Date postDate) {
 		this.postDate = postDate;
 	}
-	public int getUserImageId() {
+	public Long  getUserImageId() {
 		return userImageId;
 	}
-	public void setUserImageId(int userImageId) {
+	public void setUserImageId(Long  userImageId) {
 		this.userImageId = userImageId;
 	}
 	public List<Comment> getCommentList() {

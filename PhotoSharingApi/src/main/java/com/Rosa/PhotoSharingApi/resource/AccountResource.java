@@ -49,7 +49,7 @@ public class AccountResource {
 	}
 	
 	
-	@GetMapping("/{username}")
+	@GetMapping("/getUserByUsername/{username}")
 	public ResponseEntity<?>  getUserByUsername(@PathVariable("username") String username)
 	{
 		User user=accountService.findByUsername(username);
@@ -87,7 +87,7 @@ public class AccountResource {
 		
 		String email=request.get("email");
 		if (accountService.findByUserEmail(email)!=null) {
-			return new ResponseEntity<>("User Exist",HttpStatus.FOUND);
+			return new ResponseEntity<>("Email Exist",HttpStatus.FOUND);
 		}
 		
 		String name=request.get("name");

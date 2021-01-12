@@ -22,7 +22,7 @@ public class User  implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(updatable=false,nullable=false)
-	private Integer id;
+	private Long  id;
 	private String name;
 	
 	@Column(unique=true)
@@ -44,7 +44,7 @@ public class User  implements Serializable {
 	private List<Post> LikedPost;
 	
 	
-	public User(int id, String name, String username, String password, String email, String bio, Date createdDate,
+	public User(Long  id, String name, String username, String password, String email, String bio, Date createdDate,
 			Set<UserRole> userRoles, List<Post> post, List<Post> likedPost) {
 		
 		this.id = id;
@@ -64,10 +64,10 @@ public class User  implements Serializable {
 	}
 	
 	
-	public int getId() {
+	public Long  getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long  id) {
 		this.id = id;
 	}
 	public String getName() {

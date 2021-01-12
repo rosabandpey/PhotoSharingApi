@@ -53,17 +53,19 @@ public class PostRecource {
 	
 	
 	@GetMapping("/getPostById/{postId}")
-	public Post  getPostById(@PathVariable("postId") Long id)
+	public ResponseEntity<?>   getPostById(@PathVariable("postId") Long id)
 	{
 		Post post=postService.getPostById(id);
-		
-		return post;
+		if(post==null) {
+			return new ResponseEntity<>("post not found",HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(post,HttpStatus.OK);
 
 	}
 	
 	
 	@GetMapping("/getPostByUsername/{username}")
-	public ResponseEntity<?>   getPostById(@PathVariable("username") String username)
+	public ResponseEntity<?>   getPostByUsername(@PathVariable("username") String username)
 	{
 		User user=accountService.findByUsername(username);
 		if (user==null) {

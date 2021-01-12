@@ -17,7 +17,7 @@ public class Comment implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(updatable=false,nullable=false)
-	private Integer id;
+	private Long  id;
 	private String userName;
 	
 	@Column (columnDefinition="text")
@@ -30,7 +30,7 @@ public class Comment implements Serializable {
 	}
 	
 	
-	public Comment(int id, String userName, String content, Date postedDate) {
+	public Comment(Long  id, String userName, String content, Date postedDate) {
 		
 		this.id = id;
 		this.userName = userName;
@@ -40,10 +40,10 @@ public class Comment implements Serializable {
 	
 	
 	
-	public int getId() {
+	public Long  getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long  id) {
 		this.id = id;
 	}
 	public String getUserName() {
