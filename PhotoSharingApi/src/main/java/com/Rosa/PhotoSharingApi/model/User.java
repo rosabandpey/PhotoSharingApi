@@ -1,6 +1,8 @@
 package com.Rosa.PhotoSharingApi.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -14,8 +16,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Entity
-public class User  implements Serializable {
+public class User  implements Serializable{
 
 	
 	private static final long serialVersionUID = -6955836358739196276L;
@@ -36,6 +42,7 @@ public class User  implements Serializable {
 	
 	@OneToMany(mappedBy="user",cascade=CascadeType.ALL ,fetch=FetchType.EAGER)
 	private Set<UserRole> userRoles=new HashSet<>();
+	
 	
 	@OneToMany(cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
 	private List<Post> post;
@@ -124,7 +131,9 @@ public class User  implements Serializable {
 	public void setLikedPost(Post likedPost) {
 		LikedPost.add(likedPost) ;
 	}
+
 	
+
 	
 	
 }
