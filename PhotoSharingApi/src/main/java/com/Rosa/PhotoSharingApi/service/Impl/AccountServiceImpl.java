@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import com.Rosa.PhotoSharingApi.model.Role;
-import com.Rosa.PhotoSharingApi.model.User;
+import com.Rosa.PhotoSharingApi.model.AppUser;
 import com.Rosa.PhotoSharingApi.model.UserRole;
 import com.Rosa.PhotoSharingApi.repository.AccountRepository;
 import com.Rosa.PhotoSharingApi.repository.RoleRepository;
@@ -57,54 +57,54 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Override
 	@Transactional
-	public User saveUser(String name, String username, String email) {
+	public AppUser saveUser(String name, String username, String email) {
 		String password = RandomStringUtils.randomAlphanumeric(10);
 		String encryptedPassword = bCryptPasswordEncoder.encode(password);
-		User user = new User();
-		user.setPassword(encryptedPassword);
-		user.setName(name);
-		user.setUsername(username);
-		user.setEmail(email);
+		AppUser appUser = new AppUser();
+		appUser.setPassword(encryptedPassword);
+		appUser.setName(name);
+		appUser.setUsername(username);
+		appUser.setEmail(email);
 		Set<UserRole> userRoles = new HashSet<>();
-		userRoles.add(new UserRole(user, accountService.findUserRoleByName("USER")));
-		user.setUserRoles(userRoles);
-		accountRepo.save(user);
-		byte[] bytes;
+		userRoles.add(new UserRole(appUser, accountService.findUserRoleByName("USER")));
+		appUser.setUserRoles(userRoles);
+		accountRepo.save(appUser);
+		/* byte[] bytes;
 		try {
 			bytes = Files.readAllBytes(Constant.TEMP_USER.toPath());
-			String fileName = user.getId() + ".png";
+			String fileName = appUser.getId() + ".png";
 			Path path = Paths.get(Constant.USER_FOLDER + fileName);
 			Files.write(path, bytes);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		mailSender.send(emailConstructor.contructNewUserEmail(user, password));
-		return user;
+		mailSender.send(emailConstructor.contructNewUserEmail(appUser, password)); */
+		return appUser;
 	}
 
 	
 	
 	
 	@Override
-	public User findByUsername(String username) {
+	public AppUser findByUsername(String username) {
 		
 		return accountRepo.findByUsername(username);
 	}
 
 	@Override
-	public User findByUserEmail(String email) {
+	public AppUser findByUserEmail(String email) {
 		
 		return accountRepo.findByEmail(email);
 	}
 
 	@Override
-	public User findByUserId(Long id) {
+	public AppUser findByUserId(Long id) {
 		
 		return accountRepo.findByUserId(id);
 	}
 
 	@Override
-	public List<User> userList() {
+	public List<AppUser> userList() {
 		
 		return accountRepo.findAll();
 	}
@@ -121,7 +121,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public User updateUser(User user,HashMap<String, String> request) {
+	public AppUser updateUser(AppUser user,HashMap<String, String> request) {
 		
 			
 		String name = request.get("name");
@@ -139,12 +139,12 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public void deleteUser(User user) {
+	public void deleteUser(AppUser user) {
 		accountRepo.delete(user);
 	}
 
 	@Override
-	public void resetPassword(User user) {
+	public void resetPassword(AppUser user) {
 		
 		String password =RandomStringUtils.randomAlphanumeric(10);
 		String encryptedPass=bCryptPasswordEncoder.encode(password);
@@ -158,7 +158,7 @@ public class AccountServiceImpl implements AccountService {
 	
 
 	@Override
-	public User simpleSave(User user) {
+	public AppUser simpleSave(AppUser user) {
 		
 		accountRepo.save(user);
 		mailSender.send(emailConstructor.constructUpdateUserProfileEmail(user));
@@ -167,7 +167,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public void updateUserPassword(User user, String newpassword) {
+	public void updateUserPassword(AppUser user, String newpassword) {
 
 		String encryptedPassword = bCryptPasswordEncoder.encode(newpassword);
 		user.setPassword(encryptedPassword);
@@ -202,7 +202,7 @@ public class AccountServiceImpl implements AccountService {
 
 
 	@Override
-	public List<User> userListByUsername(String username) {
+	public List<AppUser> userListByUsername(String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}

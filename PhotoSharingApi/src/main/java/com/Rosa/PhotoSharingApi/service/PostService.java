@@ -6,11 +6,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.Rosa.PhotoSharingApi.model.Post;
-import com.Rosa.PhotoSharingApi.model.User;
+import com.Rosa.PhotoSharingApi.model.AppUser;
 
 public interface PostService {
 
-	public Post savePost(User user,HashMap<String,String> request,String postImageName);
+	public Post savePost(AppUser user,HashMap<String,String> request,String postImageName);
 	
 	public List<Post> getPostList();
 	

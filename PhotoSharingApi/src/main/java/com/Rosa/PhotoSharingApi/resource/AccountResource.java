@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Rosa.PhotoSharingApi.model.User;
+import com.Rosa.PhotoSharingApi.model.AppUser;
 import com.Rosa.PhotoSharingApi.service.AccountService;
 
 @RestController
@@ -38,7 +38,7 @@ public class AccountResource {
 	@GetMapping("/list")
 	public ResponseEntity<?>  getUserList()
 	{
-		List<User> users=accountService.userList();
+		List<AppUser> users=accountService.userList();
 		if(users.isEmpty()) {
 			
 			return new ResponseEntity<>("user not found",HttpStatus.NOT_FOUND);
@@ -52,7 +52,7 @@ public class AccountResource {
 	@GetMapping("/getUserByUsername/{username}")
 	public ResponseEntity<?>  getUserByUsername(@PathVariable("username") String username)
 	{
-		User user=accountService.findByUsername(username);
+		AppUser user=accountService.findByUsername(username);
 		if(user==null) {
 			
 			return new ResponseEntity<>("User not found",HttpStatus.NOT_FOUND);
@@ -66,7 +66,7 @@ public class AccountResource {
 	@GetMapping("/email")
 	public ResponseEntity<?>  getUserByEmail(@PathVariable("email") String email)
 	{
-		User user=accountService.findByUserEmail(email);
+		AppUser user=accountService.findByUserEmail(email);
 		if(user==null) {
 			
 			return new ResponseEntity<>("Email not found",HttpStatus.NOT_FOUND);
@@ -93,7 +93,7 @@ public class AccountResource {
 		String name=request.get("name");
 		
 		try {
-			User user=accountService.saveUser(name, username, email);
+			AppUser user=accountService.saveUser(name, username, email);
 			return new ResponseEntity<>(user,HttpStatus.OK);
 			
 		}catch (Exception e)
@@ -109,7 +109,7 @@ public class AccountResource {
 	public ResponseEntity<?>  updateUser(@RequestBody HashMap<String,String> request ){
 		
 		String id=request.get("id");
-		User user=accountService.findByUserId(Long.parseLong(id));
+		AppUser user=accountService.findByUserId(Long.parseLong(id));
 			
 			if (user==null) {
 				return new ResponseEntity<>("User not Exist",HttpStatus.NOT_FOUND);
@@ -147,7 +147,7 @@ public class AccountResource {
 	@PostMapping("/resetPassword/{email}") 
 	public ResponseEntity<String>  resetPassword(@PathVariable("email") String email ){
 		
-		User user=accountService.findByUserEmail(email);
+		AppUser user=accountService.findByUserEmail(email);
 			
 			if (user==null) {
 				return new ResponseEntity<>("User not Exist",HttpStatus.NOT_FOUND);
@@ -170,7 +170,7 @@ public class AccountResource {
 	public ResponseEntity<String>  updatePassword(@RequestBody HashMap<String,String> request ){
 		
 		String username=request.get("username");
-		User user=accountService.findByUsername(username);
+		AppUser user=accountService.findByUsername(username);
 			
 			if (user==null) {
 				return new ResponseEntity<>("User not Exist",HttpStatus.NOT_FOUND);

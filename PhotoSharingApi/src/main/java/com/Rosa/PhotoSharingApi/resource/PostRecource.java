@@ -18,9 +18,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.Rosa.PhotoSharingApi.model.Comment;
 import com.Rosa.PhotoSharingApi.model.Post;
-import com.Rosa.PhotoSharingApi.model.User;
+import com.Rosa.PhotoSharingApi.model.AppUser;
 import com.Rosa.PhotoSharingApi.service.AccountService;
 import com.Rosa.PhotoSharingApi.service.CommentService;
 import com.Rosa.PhotoSharingApi.service.PostService;
@@ -67,8 +68,8 @@ public class PostRecource {
 	@GetMapping("/getPostByUsername/{username}")
 	public ResponseEntity<?>   getPostByUsername(@PathVariable("username") String username)
 	{
-		User user=accountService.findByUsername(username);
-		if (user==null) {
+		AppUser appUser=accountService.findByUsername(username);
+		if (appUser==null) {
 			return new ResponseEntity<>("User not Exist",HttpStatus.NOT_FOUND);
 		
 		}
@@ -87,7 +88,7 @@ public class PostRecource {
 	public ResponseEntity<?>  savePost(@RequestBody HashMap<String,String> request ){
 		
 		String username=request.get("username");
-		User user=accountService.findByUsername(username);
+		AppUser user=accountService.findByUsername(username);
 		if (user==null) {
 			return new ResponseEntity<>("User not Exist",HttpStatus.NOT_FOUND);
 		
@@ -136,7 +137,7 @@ public class PostRecource {
 	public ResponseEntity<String>  likePost(@RequestBody HashMap<String,String> request ){
 		
 		String username=request.get("username");
-		User user=accountService.findByUsername(username);
+		AppUser user=accountService.findByUsername(username);
 		if (user==null) {
 			return new ResponseEntity<>("User not Exist",HttpStatus.NOT_FOUND);
 		
@@ -169,7 +170,7 @@ public class PostRecource {
 	public ResponseEntity<String>  unlikePost(@RequestBody HashMap<String,String> request ){
 		
 		String username=request.get("username");
-		User user=accountService.findByUsername(username);
+		AppUser user=accountService.findByUsername(username);
 		if (user==null) {
 			return new ResponseEntity<>("User not Exist",HttpStatus.NOT_FOUND);
 		
@@ -202,7 +203,7 @@ public class PostRecource {
 	public ResponseEntity<?>  addComment(@RequestBody HashMap<String,String> request ){
 		
 		String username=request.get("username");
-		User user=accountService.findByUsername(username);
+		AppUser user=accountService.findByUsername(username);
 		if (user==null) {
 			return new ResponseEntity<>("User not Exist",HttpStatus.NOT_FOUND);
 		

@@ -12,10 +12,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class User  implements Serializable {
+public class AppUser  implements Serializable {
 
 	
 	private static final long serialVersionUID = -6955836358739196276L;
@@ -38,13 +39,15 @@ public class User  implements Serializable {
 	private Set<UserRole> userRoles=new HashSet<>();
 	
 	@OneToMany(cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
+	@JoinColumn(name = "user_id")
 	private List<Post> post;
 	
 	@OneToMany(cascade=CascadeType.ALL ,fetch=FetchType.LAZY)
+	@JoinColumn(name = "likedPostUser_id")
 	private List<Post> LikedPost;
 	
 	
-	public User(Long  id, String name, String username, String password, String email, String bio, Date createdDate,
+	public AppUser(Long  id, String name, String username, String password, String email, String bio, Date createdDate,
 			Set<UserRole> userRoles, List<Post> post, List<Post> likedPost) {
 		
 		this.id = id;
@@ -59,7 +62,7 @@ public class User  implements Serializable {
 		LikedPost = likedPost;
 	}
 	
-	public User() {
+	public AppUser() {
 				
 	}
 	

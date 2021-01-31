@@ -19,7 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.Rosa.PhotoSharingApi.model.Post;
-import com.Rosa.PhotoSharingApi.model.User;
+import com.Rosa.PhotoSharingApi.model.AppUser;
 import com.Rosa.PhotoSharingApi.repository.PostRepository;
 import com.Rosa.PhotoSharingApi.service.PostService;
 import com.Rosa.PhotoSharingApi.utility.Constant;
@@ -33,7 +33,7 @@ public class PostServiceImpl implements PostService {
 	PostRepository postRepo;
 
 	@Override
-	public Post savePost(User user, HashMap<String, String> request, String postImageName) {
+	public Post savePost(AppUser user, HashMap<String, String> request, String postImageName) {
 		
 		String caption=request.get("caption");
 		String location=request.get("location");

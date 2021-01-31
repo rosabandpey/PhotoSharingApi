@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 
-import com.Rosa.PhotoSharingApi.model.User;
+import com.Rosa.PhotoSharingApi.model.AppUser;
 import com.Rosa.PhotoSharingApi.model.UserRole;
 import com.Rosa.PhotoSharingApi.repository.AccountRepository;
 
@@ -33,7 +33,7 @@ public class UserDetaileServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username)  
 				throws UsernameNotFoundException {
-		User user = accountRepo.findByUsername(username);
+		AppUser user = accountRepo.findByUsername(username);
 		
 		if(user==null) {
 		throw new UsernameNotFoundException(

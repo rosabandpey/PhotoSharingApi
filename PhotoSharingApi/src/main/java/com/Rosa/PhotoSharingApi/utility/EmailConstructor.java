@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import com.Rosa.PhotoSharingApi.model.User;
+import com.Rosa.PhotoSharingApi.model.AppUser;
 
 @Component
 public class EmailConstructor {
@@ -24,7 +24,7 @@ public class EmailConstructor {
 	private TemplateEngine tempEngine;
 	
 	
-	public MimeMessagePreparator contructNewUserEmail(User user,String password) {
+	public MimeMessagePreparator contructNewUserEmail(AppUser user,String password) {
 		
 		Context context=new Context();
 		context.setVariable("user", user);
@@ -52,7 +52,7 @@ public class EmailConstructor {
 	}
 	
 	
-	public MimeMessagePreparator constructUpdateUserProfileEmail(User user) {
+	public MimeMessagePreparator constructUpdateUserProfileEmail(AppUser user) {
 		Context context = new Context();
 		context.setVariable("user", user);
 		String text = tempEngine.process("updateUserProfileEmailTemplate", context);
@@ -71,7 +71,7 @@ public class EmailConstructor {
 	}
 	
 	
-	public MimeMessagePreparator constructResetPasswordEmail(User user, String password) {
+	public MimeMessagePreparator constructResetPasswordEmail(AppUser user, String password) {
 		Context context = new Context();
 		context.setVariable("user", user);
 		context.setVariable("password", password);

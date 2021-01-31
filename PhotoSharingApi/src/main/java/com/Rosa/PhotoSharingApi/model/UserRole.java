@@ -27,20 +27,21 @@ public class UserRole  implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	@JsonIgnore
-	private User user;
+	private AppUser user;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name = "role_id")
 	private Role role;
 	
 	
-	public UserRole(long userIdRole, User user, Role role) {
+	public UserRole(long userIdRole, AppUser user, Role role) {
 		
 		UserIdRole = userIdRole;
 		this.user = user;
 		this.role = role;
 	}
 
-	public UserRole(User user, Role role) {
+	public UserRole(AppUser user, Role role) {
 		this.user = user;
 		this.role = role;
 	}
@@ -59,12 +60,12 @@ public class UserRole  implements Serializable{
 	}
 
 
-	public User getUser() {
+	public AppUser getUser() {
 		return user;
 	}
 
 
-	public void setUser(User user) {
+	public void setUser(AppUser user) {
 		this.user = user;
 	}
 

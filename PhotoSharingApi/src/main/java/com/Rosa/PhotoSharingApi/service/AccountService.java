@@ -6,36 +6,36 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.Rosa.PhotoSharingApi.model.Role;
-import com.Rosa.PhotoSharingApi.model.User;
+import com.Rosa.PhotoSharingApi.model.AppUser;
 
 public interface AccountService {
 	
 	
-	public User saveUser(String name,String username,String email);
+	public AppUser saveUser(String name,String username,String email);
 	
-	public User findByUsername(String username);
+	public AppUser findByUsername(String username);
 	
-	public User findByUserEmail(String email);
+	public AppUser findByUserEmail(String email);
 	
-	public User findByUserId(Long id);
+	public AppUser findByUserId(Long id);
 	
-	public List<User> userList();
+	public List<AppUser> userList();
 	
 	public Role saveRole(Role role);
 	
 	public Role findUserRoleByName(String role);
 	
-	public User updateUser(User user,HashMap<String, String> request);
+	public AppUser updateUser(AppUser user,HashMap<String, String> request);
 	
-	public void deleteUser(User user);
+	public void deleteUser(AppUser user);
 	
-	public void resetPassword(User user);
+	public void resetPassword(AppUser user);
 	
-	public void updateUserPassword(User user,String password);
+	public void updateUserPassword(AppUser user,String password);
 	
-	public List<User> userListByUsername(String username);
+	public List<AppUser> userListByUsername(String username);
 	
-	public User simpleSave(User user);
+	public AppUser simpleSave(AppUser user);
 	
 	public String saveUserImage(HttpServletRequest request,long userImageId);
 }
